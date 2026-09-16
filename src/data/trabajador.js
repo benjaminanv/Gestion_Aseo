@@ -11,7 +11,7 @@ export const Trabajador = [
     idTrabajador: 2,
     nombre: "María López",
     rut: "9.876.543-2",
-    salasdesignadas: [11,12,13,14,15,16,17,18,19,20],
+    salasdesignadas: [11,12,13,14,15,16,17,18,19],
     inicioturno: "08:00",
     finturno: "16:00"
     },
@@ -19,7 +19,7 @@ export const Trabajador = [
     idTrabajador: 3,
     nombre: "Ruperto Flores",
     rut: "7.231.321-5",
-    salasdesignadas: [21,22,23,24,25,26,27,28,29],
+    salasdesignadas: [20,21,22,23,24,25,26,27,28,29],
     inicioturno: "08:00",
     finturno: "16:00"
     },
@@ -35,7 +35,7 @@ export const Trabajador = [
     idTrabajador: 5,
     nombre: "Juana Fernadez",
     rut: "8.532.521-8",
-    salasdesignadas: [11,12,13,14,15,16,17,18,19,20],
+    salasdesignadas: [11,12,13,14,15,16,17,18,19],
     inicioturno: "16:00",
     finturno: "23:00"
     },
@@ -43,7 +43,7 @@ export const Trabajador = [
     idTrabajador: 6,
     nombre: "Rosa Gonzalez",
     rut: "11.226.842-4",
-    salasdesignadas: [21,22,23,24,25,26,27,28,29],
+    salasdesignadas: [20,21,22,23,24,25,26,27,28,29],
     inicioturno: "16:00",
     finturno: "23:00"
     }
