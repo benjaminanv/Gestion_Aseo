@@ -6,4 +6,5 @@ export const incidencia = [
       descripcion: "Falta jabón en el dispensador",
       fecha: "14-09-26 16:40",
       estado: "pendiente"   // "pendiente" | "resuelta"
+      
     } ]
