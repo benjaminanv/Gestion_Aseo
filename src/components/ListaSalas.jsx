@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { salas } from '../data/salas'
+import { salas as salasIniciales } from '../data/salas'
 
 function formatearFechaHoraActual() {
     const ahora = new Date()
