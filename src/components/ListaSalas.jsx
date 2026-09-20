@@ -17,7 +17,17 @@ function formatearFechaHoraActual() {
     const [salaSeleccionadaId, setSalaSeleccionadaId] = useState(null)
   
     const salaSeleccionada = listaSalas.find((s) => s.idSala === salaSeleccionadaId)
-    
+
+    function marcarAseoRealizado(idSala) {
+        setListaSalas(
+          listaSalas.map((sala) =>
+            sala.idSala === idSala
+              ? { ...sala, estado: 'limpio', horaUltimaLimpieza: formatearFechaHoraActual() }
+              : sala
+          )
+        )
+      }
+
   return (
     <div>
       <button onClick={() => setPisoActivo(1)}>Piso 1</button>
