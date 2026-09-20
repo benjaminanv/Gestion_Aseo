@@ -16,7 +16,12 @@ function colorEstado(estado) {
   if (estado === 'pendiente') return 'danger'
   return 'warning'
 }
-
+function nombreEstado(estado) {
+    if (estado === 'en_proceso') return 'En proceso'
+    if (estado === 'limpio') return 'Limpio'
+    if (estado === 'pendiente') return 'Pendiente'
+    return estado
+}
 function ListaSalas() {
   const [listaSalas, setListaSalas] = useState(salasIniciales)
   const [pisoActivo, setPisoActivo] = useState(1)
