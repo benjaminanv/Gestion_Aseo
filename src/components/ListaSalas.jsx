@@ -34,37 +34,81 @@ function formatearFechaHoraActual() {
         )
       }
 
-  return (
-    <div>
-      <button onClick={() => setPisoActivo(1)}>Piso 1</button>
-      <button onClick={() => setPisoActivo(2)}>Piso 2</button>
-      <button onClick={() => setPisoActivo(3)}>Piso 3</button>
-      <button onClick={() => setPisoActivo(4)}>Piso 4</button>
-
-      <h2>Piso {pisoActivo}</h2>
-
-      {listaSalas.filter((sala) => sala.piso === pisoActivo)
-        .map((sala) => (
-          <div key={sala.idSala} onClick={() => setSalaSeleccionadaId(sala.idSala)}>
-            <p>Sala: {sala.numero} — Estado: {sala.estado}</p>
+      return (
+        <div className="container py-4">
+          <h1 className="mb-4 text-center">Gestión de Aseo</h1>
+    
+          <ul className="nav nav-pills justify-content-center mb-4">
+            {[1, 2, 3, 4].map((piso) => (
+              <li className="nav-item" key={piso}>
+                <button
+                  className={`nav-link ${pisoActivo === piso ? 'active' : ''}`}
+                  onClick={() => setPisoActivo(piso)}
+                >
+                  Piso {piso}
+                </button>
+              </li>
+            ))}
+          </ul>
+    
+          <div className="row g-3">
+            {listaSalas
+              .filter((sala) => sala.piso === pisoActivo)
+              .map((sala) => (
+                <div className="col-6 col-md-4 col-lg-3" key={sala.idSala}>
+                  <div
+                    className="card h-100 shadow-sm"
+                    role="button"
+                    onClick={() => setSalaSeleccionadaId(sala.idSala)}
+                  >
+                    <div className="card-body text-center">
+                      <h5 className="card-title">{sala.numero}</h5>
+                      <span className={`badge bg-${colorEstado(sala.estado)}`}>
+                        {sala.estado}
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              ))}
           </div>
-        ))}
-
-{salaSeleccionada && (<div>
-          <h3>Detalle de la sala {salaSeleccionada.numero}</h3>
-          <p>Piso: {salaSeleccionada.piso}</p>
-          <p>Estado: {salaSeleccionada.estado}</p>
-          <p>Última limpieza: {salaSeleccionada.horaUltimaLimpieza}</p>
-          <p>Trabajadores asignados: {salaSeleccionada.trabajador.join(', ')}</p>
-          <button onClick={() => marcarAseoRealizado(salaSeleccionada.idSala)}>
-            Marcar aseo realizado
-          </button>
-          <button onClick={() => setSalaSeleccionadaId(null)}>Cerrar detalle</button>
+    
+          {salaSeleccionada && (
+            <div className="modal d-block" style={{ backgroundColor: 'rgba(0,0,0,0.5)' }}>
+              <div className="modal-dialog modal-dialog-centered">
+                <div className="modal-content p-3">
+                  <div className="modal-header">
+                    <h5 className="modal-title">Sala {salaSeleccionada.numero}</h5>
+                    <button
+                      className="btn-close"
+                      onClick={() => setSalaSeleccionadaId(null)}
+                    ></button>
+                  </div>
+                  <div className="modal-body">
+                    <p><strong>Piso:</strong> {salaSeleccionada.piso}</p>
+                    <p>
+                      <strong>Estado:</strong>{' '}
+                      <span className={`badge bg-${colorEstado(salaSeleccionada.estado)}`}>
+                        {salaSeleccionada.estado}
+                      </span>
+                    </p>
+                    <p><strong>Última limpieza:</strong> {salaSeleccionada.horaUltimaLimpieza}</p>
+                    <p><strong>Trabajadores asignados:</strong> {salaSeleccionada.trabajador.join(', ')}</p>
+                  </div>
+                  <div className="modal-footer">
+                    <button className="btn btn-success" onClick={() => marcarAseoRealizado(salaSeleccionada.idSala)}>
+                      Marcar aseo realizado
+                    </button>
+                    <button className="btn btn-secondary" onClick={() => setSalaSeleccionadaId(null)}>
+                      Cerrar
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          )}
         </div>
-      )}
-    </div>
-  )
-}
+      )
+    }
 
 
    
