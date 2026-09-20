@@ -44,8 +44,25 @@ function formatearFechaHoraActual() {
           </div>
         ))}
 
+{salaSeleccionada && (<div>
+          <h3>Detalle de la sala {salaSeleccionada.numero}</h3>
+          <p>Piso: {salaSeleccionada.piso}</p>
+          <p>Estado: {salaSeleccionada.estado}</p>
+          <p>Última limpieza: {salaSeleccionada.horaUltimaLimpieza}</p>
+          <p>Trabajadores asignados: {salaSeleccionada.trabajador.join(', ')}</p>
+          <button onClick={() => marcarAseoRealizado(salaSeleccionada.idSala)}>
+            Marcar aseo realizado
+          </button>
+          <button onClick={() => setSalaSeleccionadaId(null)}>Cerrar detalle</button>
+        </div>
+      )}
     </div>
   )
 }
+
+
+   
+  
+
 
 export default ListaSalas
