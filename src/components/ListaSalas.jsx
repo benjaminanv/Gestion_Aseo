@@ -37,14 +37,13 @@ function formatearFechaHoraActual() {
 
       <h2>Piso {pisoActivo}</h2>
 
-      {salas.filter((sala) => sala.piso === pisoActivo).map((sala) => (
-        <div key={sala.idSala}>
-          <p>Piso: {sala.piso}</p>
-          <p>Estado: {sala.estado}</p>
-          <p>Última limpieza: {sala.horaUltimaLimpieza}</p>
-          <p>Sala: {sala.numero}</p>
-        </div>
-      ))}
+      {listaSalas.filter((sala) => sala.piso === pisoActivo)
+        .map((sala) => (
+          <div key={sala.idSala} onClick={() => setSalaSeleccionadaId(sala.idSala)}>
+            <p>Sala: {sala.numero} — Estado: {sala.estado}</p>
+          </div>
+        ))}
+
     </div>
   )
 }
