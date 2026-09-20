@@ -11,6 +11,12 @@ function formatearFechaHoraActual() {
     return `${dia}-${mes}-${anio} ${horas}:${minutos}`
   }
 
+  function colorEstado(estado) {
+    if (estado === 'limpio') return 'success'
+    if (estado === 'pendiente') return 'danger'
+    return 'warning'
+  }
+
   function ListaSalas() {
     const [listaSalas, setListaSalas] = useState(salasIniciales)
     const [pisoActivo, setPisoActivo] = useState(1)
