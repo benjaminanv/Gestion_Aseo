@@ -34,11 +34,15 @@ function formatearFechaHoraActual() {
         )
       }
 
+      const salasFiltradas = listaSalas
+      .filter((sala) => sala.piso === pisoActivo)
+      .filter((sala) => estadoActivo === 'todos' || sala.estado === estadoActivo)
+
       return (
         <div className="container py-4">
           <h1 className="mb-4 text-center">Gestión de Aseo</h1>
     
-          <ul className="nav nav-pills justify-content-center mb-4">
+          <ul className="nav nav-pills justify-content-center mb-3">
             {[1, 2, 3, 4].map((piso) => (
               <li className="nav-item" key={piso}>
                 <button
@@ -51,26 +55,55 @@ function formatearFechaHoraActual() {
             ))}
           </ul>
     
+          <div className="d-flex justify-content-center gap-2 mb-4">
+            <button
+              className={`btn btn-sm ${estadoActivo === 'todos' ? 'btn-dark' : 'btn-outline-dark'}`}
+              onClick={() => setEstadoActivo('todos')}
+            >
+              Todos
+            </button>
+            <button
+              className={`btn btn-sm ${estadoActivo === 'limpio' ? 'btn-success' : 'btn-outline-success'}`}
+              onClick={() => setEstadoActivo('limpio')}
+            >
+              Limpio
+            </button>
+            <button
+              className={`btn btn-sm ${estadoActivo === 'pendiente' ? 'btn-danger' : 'btn-outline-danger'}`}
+              onClick={() => setEstadoActivo('pendiente')}
+            >
+              Pendiente
+            </button>
+            <button
+              className={`btn btn-sm ${estadoActivo === 'en_proceso' ? 'btn-warning' : 'btn-outline-warning'}`}
+              onClick={() => setEstadoActivo('en_proceso')}
+            >
+              En proceso
+            </button>
+          </div>
+    
           <div className="row g-3">
-            {listaSalas
-              .filter((sala) => sala.piso === pisoActivo)
-              .map((sala) => (
-                <div className="col-6 col-md-4 col-lg-3" key={sala.idSala}>
-                  <div
-                    className="card h-100 shadow-sm"
-                    role="button"
-                    onClick={() => setSalaSeleccionadaId(sala.idSala)}
-                  >
-                    <div className="card-body text-center">
-                      <h5 className="card-title">{sala.numero}</h5>
-                      <span className={`badge bg-${colorEstado(sala.estado)}`}>
-                        {sala.estado}
-                      </span>
-                    </div>
+            {salasFiltradas.map((sala) => (
+              <div className="col-6 col-md-4 col-lg-3" key={sala.idSala}>
+                <div
+                  className="card h-100 shadow-sm"
+                  role="button"
+                  onClick={() => setSalaSeleccionadaId(sala.idSala)}
+                >
+                  <div className="card-body text-center">
+                    <h5 className="card-title">{sala.numero}</h5>
+                    <span className={`badge bg-${colorEstado(sala.estado)}`}>
+                      {sala.estado}
+                    </span>
                   </div>
                 </div>
-              ))}
+              </div>
+            ))}
           </div>
+    
+          {salasFiltradas.length === 0 && (
+            <p className="text-center text-muted mt-4">No hay salas con ese filtro.</p>
+          )}
     
           {salaSeleccionada && (
             <div className="modal d-block" style={{ backgroundColor: 'rgba(0,0,0,0.5)' }}>
@@ -78,10 +111,7 @@ function formatearFechaHoraActual() {
                 <div className="modal-content p-3">
                   <div className="modal-header">
                     <h5 className="modal-title">Sala {salaSeleccionada.numero}</h5>
-                    <button
-                      className="btn-close"
-                      onClick={() => setSalaSeleccionadaId(null)}
-                    ></button>
+                    <button className="btn-close" onClick={() => setSalaSeleccionadaId(null)}></button>
                   </div>
                   <div className="modal-body">
                     <p><strong>Piso:</strong> {salaSeleccionada.piso}</p>
@@ -110,9 +140,5 @@ function formatearFechaHoraActual() {
       )
     }
 
-
-   
-  
-
-
+ 
 export default ListaSalas
