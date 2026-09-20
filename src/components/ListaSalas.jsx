@@ -1,6 +1,16 @@
 import { useState } from 'react'
 import { salas } from '../data/salas'
 
+function formatearFechaHoraActual() {
+    const ahora = new Date()
+    const dia = String(ahora.getDate()).padStart(2, '0')
+    const mes = String(ahora.getMonth() + 1).padStart(2, '0')
+    const anio = String(ahora.getFullYear()).slice(-2)
+    const horas = String(ahora.getHours()).padStart(2, '0')
+    const minutos = String(ahora.getMinutes()).padStart(2, '0')
+    return `${dia}-${mes}-${anio} ${horas}:${minutos}`
+  }
+
 function ListaSalas() {
   const [pisoActivo, setPisoActivo] = useState(1)
 
