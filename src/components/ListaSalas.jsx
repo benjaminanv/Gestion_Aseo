@@ -11,9 +11,13 @@ function formatearFechaHoraActual() {
     return `${dia}-${mes}-${anio} ${horas}:${minutos}`
   }
 
-function ListaSalas() {
-  const [pisoActivo, setPisoActivo] = useState(1)
-
+  function ListaSalas() {
+    const [listaSalas, setListaSalas] = useState(salasIniciales)
+    const [pisoActivo, setPisoActivo] = useState(1)
+    const [salaSeleccionadaId, setSalaSeleccionadaId] = useState(null)
+  
+    const salaSeleccionada = listaSalas.find((s) => s.idSala === salaSeleccionadaId)
+    
   return (
     <div>
       <button onClick={() => setPisoActivo(1)}>Piso 1</button>
