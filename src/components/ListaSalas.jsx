@@ -4,6 +4,7 @@ import { incidencia as incidenciasIniciales } from '../data/incidencia'
 import IncidenciasSala from './IncidenciasSala'
 import TrabajadorTag from './TrabajadorTag'
 import HistorialTrabajadores from './HistorialTrabajadores'
+import { colorEstado, nombreEstado } from '../utils'
 
 function formatearFechaHoraActual() {
   const ahora = new Date()
