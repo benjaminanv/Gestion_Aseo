@@ -3,6 +3,7 @@ import { salas as salasIniciales } from '../data/salas'
 import { incidencia as incidenciasIniciales } from '../data/incidencia'
 import IncidenciasSala from './IncidenciasSala'
 import TrabajadorTag from './TrabajadorTag'
+import HistorialTrabajadores from './HistorialTrabajadores'
 
 function formatearFechaHoraActual() {
   const ahora = new Date()
@@ -19,18 +20,21 @@ function colorEstado(estado) {
   if (estado === 'pendiente') return 'danger'
   return 'warning'
 }
+
 function nombreEstado(estado) {
-    if (estado === 'en_proceso') return 'En proceso'
-    if (estado === 'limpio') return 'Limpio'
-    if (estado === 'pendiente') return 'Pendiente'
-    return estado
+  if (estado === 'en_proceso') return 'En proceso'
+  if (estado === 'limpio') return 'Limpio'
+  if (estado === 'pendiente') return 'Pendiente'
+  return estado
 }
+
 function ListaSalas() {
   const [listaSalas, setListaSalas] = useState(salasIniciales)
   const [pisoActivo, setPisoActivo] = useState(1)
   const [estadoActivo, setEstadoActivo] = useState('todos')
   const [salaSeleccionadaId, setSalaSeleccionadaId] = useState(null)
   const [listaIncidencias, setListaIncidencias] = useState(incidenciasIniciales)
+  const [vistaActiva, setVistaActiva] = useState('salas')
 
   const salaSeleccionada = listaSalas.find((s) => s.idSala === salaSeleccionadaId)
 
@@ -59,6 +63,7 @@ function ListaSalas() {
     }
     setListaIncidencias([...listaIncidencias, nuevaIncidencia])
   }
+
   function cambiarEstadoIncidencia(idIncidencia) {
     setListaIncidencias(
       listaIncidencias.map((inc) =>
@@ -68,6 +73,7 @@ function ListaSalas() {
       )
     )
   }
+
   const salasFiltradas = listaSalas
     .filter((sala) => sala.piso === pisoActivo)
     .filter((sala) => estadoActivo === 'todos' || sala.estado === estadoActivo)
@@ -89,54 +95,71 @@ function ListaSalas() {
         ))}
       </ul>
 
-      <div className="d-flex justify-content-center gap-2 mb-4">
+      {vistaActiva === 'salas' && (
+        <div className="d-flex justify-content-center gap-2 mb-4">
+          <button
+            className={`btn btn-sm ${estadoActivo === 'todos' ? 'btn-dark' : 'btn-outline-dark'}`}
+            onClick={() => setEstadoActivo('todos')}
+          >
+            Todos
+          </button>
+          <button
+            className={`btn btn-sm ${estadoActivo === 'limpio' ? 'btn-success' : 'btn-outline-success'}`}
+            onClick={() => setEstadoActivo('limpio')}
+          >
+            Limpio
+          </button>
+          <button
+            className={`btn btn-sm ${estadoActivo === 'pendiente' ? 'btn-danger' : 'btn-outline-danger'}`}
+            onClick={() => setEstadoActivo('pendiente')}
+          >
+            Pendiente
+          </button>
+          <button
+            className={`btn btn-sm ${estadoActivo === 'en_proceso' ? 'btn-warning' : 'btn-outline-warning'}`}
+            onClick={() => setEstadoActivo('en_proceso')}
+          >
+            En proceso
+          </button>
+        </div>
+      )}
+
+      <div className="text-center mb-4">
         <button
-          className={`btn btn-sm ${estadoActivo === 'todos' ? 'btn-dark' : 'btn-outline-dark'}`}
-          onClick={() => setEstadoActivo('todos')}
+          className="btn btn-outline-secondary btn-sm"
+          onClick={() => setVistaActiva(vistaActiva === 'salas' ? 'trabajadores' : 'salas')}
         >
-          Todos
-        </button>
-        <button
-          className={`btn btn-sm ${estadoActivo === 'limpio' ? 'btn-success' : 'btn-outline-success'}`}
-          onClick={() => setEstadoActivo('limpio')}
-        >
-          Limpio
-        </button>
-        <button
-          className={`btn btn-sm ${estadoActivo === 'pendiente' ? 'btn-danger' : 'btn-outline-danger'}`}
-          onClick={() => setEstadoActivo('pendiente')}
-        >
-          Pendiente
-        </button>
-        <button
-          className={`btn btn-sm ${estadoActivo === 'en_proceso' ? 'btn-warning' : 'btn-outline-warning'}`}
-          onClick={() => setEstadoActivo('en_proceso')}
-        >
-          En proceso
+          {vistaActiva === 'salas' ? 'Ver historial de trabajadores' : 'Volver a salas'}
         </button>
       </div>
 
-      <div className="row g-3">
-        {salasFiltradas.map((sala) => (
-          <div className="col-6 col-md-4 col-lg-3" key={sala.idSala}>
-            <div
-              className="card card-sala h-100 shadow-sm"
-              role="button"
-              onClick={() => setSalaSeleccionadaId(sala.idSala)}
-            >
-              <div className="card-body text-center">
-                <h5 className="card-title">{sala.numero}</h5>
-                <span className={`badge bg-${colorEstado(sala.estado)}`}>
-                {nombreEstado(sala.estado)}
-                </span>
+      {vistaActiva === 'salas' ? (
+        <>
+          <div className="row g-3">
+            {salasFiltradas.map((sala) => (
+              <div className="col-6 col-md-4 col-lg-3" key={sala.idSala}>
+                <div
+                  className="card card-sala h-100 shadow-sm"
+                  role="button"
+                  onClick={() => setSalaSeleccionadaId(sala.idSala)}
+                >
+                  <div className="card-body text-center">
+                    <h5 className="card-title">{sala.numero}</h5>
+                    <span className={`badge bg-${colorEstado(sala.estado)}`}>
+                      {nombreEstado(sala.estado)}
+                    </span>
+                  </div>
+                </div>
               </div>
-            </div>
+            ))}
           </div>
-        ))}
-      </div>
 
-      {salasFiltradas.length === 0 && (
-        <p className="text-center text-muted mt-4">No hay salas con ese filtro.</p>
+          {salasFiltradas.length === 0 && (
+            <p className="text-center text-muted mt-4">No hay salas con ese filtro.</p>
+          )}
+        </>
+      ) : (
+        <HistorialTrabajadores salas={listaSalas} />
       )}
 
       {salaSeleccionada && (
@@ -152,21 +175,21 @@ function ListaSalas() {
                 <p>
                   <strong>Estado:</strong>{' '}
                   <span className={`badge bg-${colorEstado(salaSeleccionada.estado)}`}>
-                  {nombreEstado(salaSeleccionada.estado)}
+                    {nombreEstado(salaSeleccionada.estado)}
                   </span>
                 </p>
                 <p><strong>Última limpieza:</strong> {salaSeleccionada.horaUltimaLimpieza}</p>
                 <p>
-  <strong>Trabajadores asignados:</strong>{' '}
-  {salaSeleccionada.trabajador.map((id) => (
-    <TrabajadorTag key={id} idTrabajador={id} />
-  ))}
-</p>
+                  <strong>Trabajadores asignados:</strong>{' '}
+                  {salaSeleccionada.trabajador.map((id) => (
+                    <TrabajadorTag key={id} idTrabajador={id} />
+                  ))}
+                </p>
                 <IncidenciasSala
-  incidencias={listaIncidencias.filter((inc) => inc.salaId === salaSeleccionada.idSala)}
-  onAgregarIncidencia={(descripcion) => agregarIncidencia(salaSeleccionada.idSala, descripcion)}
-  onCambiarEstadoIncidencia={cambiarEstadoIncidencia}
-/>
+                  incidencias={listaIncidencias.filter((inc) => inc.salaId === salaSeleccionada.idSala)}
+                  onAgregarIncidencia={(descripcion) => agregarIncidencia(salaSeleccionada.idSala, descripcion)}
+                  onCambiarEstadoIncidencia={cambiarEstadoIncidencia}
+                />
               </div>
               <div className="modal-footer flex-column">
                 <div className="d-flex gap-2 w-100 mb-2">
