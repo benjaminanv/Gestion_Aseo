@@ -27,6 +27,8 @@ function ListaSalas() {
   const [salaSeleccionadaId, setSalaSeleccionadaId] = useState(null)
   const [listaIncidencias, setListaIncidencias] = useState(incidenciasIniciales)
   const [vistaActiva, setVistaActiva] = useState('salas')
+  const [trabajadorSeleccionadoId, setTrabajadorSeleccionadoId] = useState(null)
+
 
   const salaSeleccionada = listaSalas.find((s) => s.idSala === salaSeleccionadaId)
 
@@ -214,9 +216,12 @@ function ListaSalas() {
 
           {vistaActiva === 'asignar' && (
             <AsignarTrabajadores
-              salas={listaSalas.filter((sala) => sala.piso === pisoActivo)}
-              onAlternarTrabajador={alternarTrabajadorEnSala}
-            />
+            trabajadores={Trabajador}
+            salas={listaSalas}
+            trabajadorSeleccionadoId={trabajadorSeleccionadoId}
+            onSeleccionarTrabajador={setTrabajadorSeleccionadoId}
+            onAlternarTrabajador={alternarTrabajadorEnSala}
+          />
           )}
 
           {salaSeleccionada && (
