@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { salas as salasIniciales } from '../data/salas'
 import { incidencia as incidenciasIniciales } from '../data/incidencia'
 import IncidenciasSala from './IncidenciasSala'
+import TrabajadorTag from './TrabajadorTag'
 
 function formatearFechaHoraActual() {
   const ahora = new Date()
@@ -155,7 +156,12 @@ function ListaSalas() {
                   </span>
                 </p>
                 <p><strong>Última limpieza:</strong> {salaSeleccionada.horaUltimaLimpieza}</p>
-                <p><strong>Trabajadores asignados:</strong> {salaSeleccionada.trabajador.join(', ')}</p>
+                <p>
+  <strong>Trabajadores asignados:</strong>{' '}
+  {salaSeleccionada.trabajador.map((id) => (
+    <TrabajadorTag key={id} idTrabajador={id} />
+  ))}
+</p>
                 <IncidenciasSala
   incidencias={listaIncidencias.filter((inc) => inc.salaId === salaSeleccionada.idSala)}
   onAgregarIncidencia={(descripcion) => agregarIncidencia(salaSeleccionada.idSala, descripcion)}
