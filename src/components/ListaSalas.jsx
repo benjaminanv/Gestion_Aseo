@@ -1,5 +1,7 @@
 import { useState } from 'react'
 import { salas as salasIniciales } from '../data/salas'
+import { incidencia as incidenciasIniciales } from '../data/incidencia'
+import IncidenciasSala from './IncidenciasSala
 
 function formatearFechaHoraActual() {
   const ahora = new Date()
@@ -27,6 +29,7 @@ function ListaSalas() {
   const [pisoActivo, setPisoActivo] = useState(1)
   const [estadoActivo, setEstadoActivo] = useState('todos')
   const [salaSeleccionadaId, setSalaSeleccionadaId] = useState(null)
+  const [listaIncidencias, setListaIncidencias] = useState(incidenciasIniciales)
 
   const salaSeleccionada = listaSalas.find((s) => s.idSala === salaSeleccionadaId)
 
@@ -43,6 +46,17 @@ function ListaSalas() {
           : sala
       )
     )
+  }
+
+  function agregarIncidencia(salaId, descripcion) {
+    const nuevaIncidencia = {
+      idIncidencia: listaIncidencias.length + 1,
+      salaId: salaId,
+      descripcion: descripcion,
+      fecha: formatearFechaHoraActual(),
+      estado: 'abierta'
+    }
+    setListaIncidencias([...listaIncidencias, nuevaIncidencia])
   }
 
   const salasFiltradas = listaSalas
