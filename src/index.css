@@ -111,30 +111,115 @@ code {
 }
 .trabajador-tag {
   position: relative;
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #4e73df, #224abe);
+  color: white;
+  font-size: 0.75rem;
+  font-weight: 600;
   cursor: pointer;
-  text-decoration: underline dotted;
-  margin-right: 4px;
+  margin-right: 6px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  transition: transform 0.15s ease;
+}
+
+.trabajador-tag:hover {
+  transform: scale(1.15);
 }
 
 .trabajador-tooltip {
   visibility: hidden;
   opacity: 0;
   position: absolute;
-  bottom: 125%;
+  bottom: 130%;
   left: 50%;
-  transform: translateX(-50%);
+  transform: translateX(-50%) translateY(5px);
   background-color: #212529;
   color: white;
-  padding: 6px 10px;
-  border-radius: 6px;
+  padding: 8px 12px;
+  border-radius: 8px;
   font-size: 0.8rem;
+  font-weight: 400;
   white-space: nowrap;
-  transition: opacity 0.2s;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
+  transition: opacity 0.2s ease, transform 0.2s ease;
   z-index: 10;
+}
+
+.trabajador-tooltip::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  border-width: 6px;
+  border-style: solid;
+  border-color: #212529 transparent transparent transparent;
 }
 
 .trabajador-tag:hover .trabajador-tooltip {
   visibility: visible;
   opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+
+body {
+  background-color: #f4f6f9;
+  font-family: 'Segoe UI', system-ui, sans-serif;
+}
+
+.app-title {
+  font-weight: 700;
+  color: #224abe;
+  letter-spacing: 0.5px;
+}
+
+.card-sala {
+  border: none;
+  border-radius: 14px;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+  cursor: pointer;
+}
+
+.card-sala:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1) !important;
+}
+
+.card-sala .card-title {
+  font-weight: 700;
+  color: #2e2e2e;
+}
+
+.badge {
+  font-weight: 500;
+  padding: 6px 10px;
+  border-radius: 8px;
+}
+
+.nav-pills .nav-link {
+  border-radius: 20px;
+  font-weight: 500;
+  color: #495057;
+}
+
+.nav-pills .nav-link.active {
+  background-color: #224abe;
+}
+
+.modal-content {
+  border-radius: 16px;
+  border: none;
+}
+
+.modal-header {
+  border-bottom: 1px solid #eee;
+}
+
+.modal-footer {
+  border-top: 1px solid #eee;
 }

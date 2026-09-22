@@ -74,7 +74,7 @@ function ListaSalas() {
 
   return (
     <div className="container py-4">
-      <h1 className="mb-4 text-center">Gestión de Aseo</h1>
+      <h1 className="mb-4 text-center app-title">Gestión de Aseo</h1>
 
       <ul className="nav nav-pills justify-content-center mb-3">
         {[1, 2, 3, 4].map((piso) => (
@@ -120,7 +120,7 @@ function ListaSalas() {
         {salasFiltradas.map((sala) => (
           <div className="col-6 col-md-4 col-lg-3" key={sala.idSala}>
             <div
-              className="card h-100 shadow-sm"
+              className="card card-sala h-100 shadow-sm"
               role="button"
               onClick={() => setSalaSeleccionadaId(sala.idSala)}
             >

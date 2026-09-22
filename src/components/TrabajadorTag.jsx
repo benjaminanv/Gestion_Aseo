@@ -7,7 +7,7 @@ function TrabajadorTag({ idTrabajador }) {
 
   return (
     <span className="trabajador-tag">
-      {idTrabajador}
+  {idTrabajador}
       <span className="trabajador-tooltip">
         <strong>{trabajador.nombre}</strong>
         <br />
@@ -16,5 +16,6 @@ function TrabajadorTag({ idTrabajador }) {
     </span>
   )
 }
+
 
 export default TrabajadorTag
