@@ -124,22 +124,36 @@ function ListaSalas() {
       {vistaActiva === 'salas' ? (
         <>
           <div className="row g-3">
-            {salasFiltradas.map((sala) => (
-              <div className="col-6 col-md-4 col-lg-3" key={sala.idSala}>
-                <div
-                  className="card card-sala h-100 shadow-sm"
-                  role="button"
-                  onClick={() => setSalaSeleccionadaId(sala.idSala)}
-                >
-                  <div className="card-body text-center">
-                    <h5 className="card-title">{sala.numero}</h5>
-                    <span className={`badge bg-${colorEstado(sala.estado)}`}>
-                      {nombreEstado(sala.estado)}
-                    </span>
-                  </div>
-                </div>
-              </div>
-            ))}
+          {salasFiltradas.map((sala) => {
+  const tieneIncidenciaAbierta = listaIncidencias.some(
+    (inc) => inc.salaId === sala.idSala && inc.estado === 'abierta'
+  )
+
+  return (
+    <div className="col-6 col-md-4 col-lg-3" key={sala.idSala}>
+      <div
+        className="card card-sala h-100 shadow-sm position-relative"
+        role="button"
+        onClick={() => setSalaSeleccionadaId(sala.idSala)}
+      >
+        {tieneIncidenciaAbierta && (
+          <span
+            className="position-absolute top-0 end-0 translate-middle badge rounded-pill bg-danger"
+            title="Tiene incidencias pendientes"
+          >
+            !
+          </span>
+        )}
+        <div className="card-body text-center">
+          <h5 className="card-title">{sala.numero}</h5>
+          <span className={`badge bg-${colorEstado(sala.estado)}`}>
+            {nombreEstado(sala.estado)}
+          </span>
+        </div>
+      </div>
+    </div>
+  )
+})}
           </div>
 
           {salasFiltradas.length === 0 && (
