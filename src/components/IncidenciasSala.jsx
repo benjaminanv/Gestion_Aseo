@@ -1,6 +1,6 @@
 import { useState } from 'react'
 
-function IncidenciasSala({ incidencias, onAgregarIncidencia }) {
+function IncidenciasSala({ incidencias, onAgregarIncidencia, onCambiarEstadoIncidencia }) {
   const [descripcion, setDescripcion] = useState('')
 
   function manejarEnviar(e) {
@@ -25,9 +25,17 @@ function IncidenciasSala({ incidencias, onAgregarIncidencia }) {
               <div>{inc.descripcion}</div>
               <small className="text-muted">{inc.fecha}</small>
             </div>
-            <span className={`badge ${inc.estado === 'abierta' ? 'bg-danger' : 'bg-secondary'}`}>
-              {inc.estado}
-            </span>
+            <div className="d-flex align-items-center gap-2">
+              <span className={`badge ${inc.estado === 'abierta' ? 'bg-danger' : 'bg-secondary'}`}>
+                {inc.estado}
+              </span>
+              <button
+                className="btn btn-sm btn-outline-primary"
+                onClick={() => onCambiarEstadoIncidencia(inc.idIncidencia)}
+              >
+                {inc.estado === 'abierta' ? 'Marcar resuelta' : 'Reabrir'}
+              </button>
+            </div>
           </li>
         ))}
       </ul>
