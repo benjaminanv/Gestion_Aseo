@@ -58,7 +58,15 @@ function ListaSalas() {
     }
     setListaIncidencias([...listaIncidencias, nuevaIncidencia])
   }
-
+  function cambiarEstadoIncidencia(idIncidencia) {
+    setListaIncidencias(
+      listaIncidencias.map((inc) =>
+        inc.idIncidencia === idIncidencia
+          ? { ...inc, estado: inc.estado === 'abierta' ? 'resuelta' : 'abierta' }
+          : inc
+      )
+    )
+  }
   const salasFiltradas = listaSalas
     .filter((sala) => sala.piso === pisoActivo)
     .filter((sala) => estadoActivo === 'todos' || sala.estado === estadoActivo)
