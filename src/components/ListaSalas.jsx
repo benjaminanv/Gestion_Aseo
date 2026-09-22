@@ -5,6 +5,7 @@ import IncidenciasSala from './IncidenciasSala'
 import TrabajadorTag from './TrabajadorTag'
 import HistorialTrabajadores from './HistorialTrabajadores'
 import { colorEstado, nombreEstado } from '../utils'
+import { Trabajador } from '../data/trabajador'
 
 function formatearFechaHoraActual() {
   const ahora = new Date()
@@ -41,6 +42,21 @@ function ListaSalas() {
       setCargando(false)
     })
   }, [])
+
+  function alternarTrabajadorEnSala(idSala, idTrabajador) {
+    setListaSalas(
+      listaSalas.map((sala) => {
+        if (sala.idSala !== idSala) return sala
+  
+        const yaAsignado = sala.trabajador.includes(idTrabajador)
+        const nuevosTrabajadores = yaAsignado
+          ? sala.trabajador.filter((id) => id !== idTrabajador)
+          : [...sala.trabajador, idTrabajador]
+  
+        return { ...sala, trabajador: nuevosTrabajadores }
+      })
+    )
+  }
 
   function cambiarEstadoSala(idSala, nuevoEstado) {
     setListaSalas(
