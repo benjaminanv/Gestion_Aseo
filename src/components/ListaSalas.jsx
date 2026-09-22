@@ -156,8 +156,11 @@ function ListaSalas() {
                 </p>
                 <p><strong>Última limpieza:</strong> {salaSeleccionada.horaUltimaLimpieza}</p>
                 <p><strong>Trabajadores asignados:</strong> {salaSeleccionada.trabajador.join(', ')}</p>
-                <IncidenciasSala incidencias={listaIncidencias.filter((inc) => inc.salaId === salaSeleccionada.idSala)}
-                  onAgregarIncidencia={(descripcion) => agregarIncidencia(salaSeleccionada.idSala, descripcion)}/>
+                <IncidenciasSala
+  incidencias={listaIncidencias.filter((inc) => inc.salaId === salaSeleccionada.idSala)}
+  onAgregarIncidencia={(descripcion) => agregarIncidencia(salaSeleccionada.idSala, descripcion)}
+  onCambiarEstadoIncidencia={cambiarEstadoIncidencia}
+/>
               </div>
               <div className="modal-footer flex-column">
                 <div className="d-flex gap-2 w-100 mb-2">
