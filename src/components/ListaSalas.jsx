@@ -104,7 +104,7 @@ function ListaSalas() {
               <div className="card-body text-center">
                 <h5 className="card-title">{sala.numero}</h5>
                 <span className={`badge bg-${colorEstado(sala.estado)}`}>
-                  {sala.estado}
+                {nombreEstado(sala.estado)}
                 </span>
               </div>
             </div>
@@ -129,7 +129,7 @@ function ListaSalas() {
                 <p>
                   <strong>Estado:</strong>{' '}
                   <span className={`badge bg-${colorEstado(salaSeleccionada.estado)}`}>
-                    {salaSeleccionada.estado}
+                  {nombreEstado(salaSeleccionada.estado)}
                   </span>
                 </p>
                 <p><strong>Última limpieza:</strong> {salaSeleccionada.horaUltimaLimpieza}</p>
