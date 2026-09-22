@@ -6,6 +6,8 @@ import TrabajadorTag from './TrabajadorTag'
 import HistorialTrabajadores from './HistorialTrabajadores'
 import { colorEstado, nombreEstado } from '../utils'
 import { Trabajador } from '../data/trabajador'
+import AsignarTrabajadores from './AsignarTrabajadores'
+
 
 function formatearFechaHoraActual() {
   const ahora = new Date()
@@ -150,16 +152,22 @@ function ListaSalas() {
             </div>
           )}
 
-          <div className="text-center mb-4">
-            <button
-              className="btn btn-outline-secondary btn-sm"
-              onClick={() => setVistaActiva(vistaActiva === 'salas' ? 'trabajadores' : 'salas')}
-            >
-              {vistaActiva === 'salas' ? 'Ver historial de trabajadores' : 'Volver a salas'}
-            </button>
-          </div>
+      <div className="text-center mb-4 d-flex justify-content-center gap-2">
+       <button
+         className="btn btn-outline-secondary btn-sm"
+           onClick={() => setVistaActiva(vistaActiva === 'trabajadores' ? 'salas' : 'trabajadores')}
+           >
+           {vistaActiva === 'trabajadores' ? 'Volver a salas' : 'Ver historial de trabajadores'}
+          </button>
+              <button
+         className="btn btn-outline-primary btn-sm"
+              onClick={() => setVistaActiva(vistaActiva === 'asignar' ? 'salas' : 'asignar')}
+               >
+    {vistaActiva === 'asignar' ? 'Volver a salas' : 'Modificar carga de trabajadores'}
+               </button>
+</div>
 
-          {vistaActiva === 'salas' ? (
+{vistaActiva === 'salas' && (
             <>
               <div className="row g-3">
                 {salasFiltradas.map((sala) => {
@@ -198,8 +206,17 @@ function ListaSalas() {
                 <p className="text-center text-muted mt-4">No hay salas con ese filtro.</p>
               )}
             </>
-          ) : (
+          )}
+
+          {vistaActiva === 'trabajadores' && (
             <HistorialTrabajadores salas={listaSalas} />
+          )}
+
+          {vistaActiva === 'asignar' && (
+            <AsignarTrabajadores
+              salas={listaSalas.filter((sala) => sala.piso === pisoActivo)}
+              onAlternarTrabajador={alternarTrabajadorEnSala}
+            />
           )}
 
           {salaSeleccionada && (
