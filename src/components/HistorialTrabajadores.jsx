@@ -1,4 +1,5 @@
 import { Trabajador } from '../data/trabajador'
+import { colorEstado, nombreEstado } from '../utils'
 
 function HistorialTrabajadores({ salas }) {
   return (
@@ -18,7 +19,11 @@ function HistorialTrabajadores({ salas }) {
                 </p>
                 <div className="d-flex flex-wrap gap-2">
                   {salasDelTrabajador.map((sala) => (
-                    <span key={sala.idSala} className="badge bg-primary">
+                    <span
+                      key={sala.idSala}
+                      className={`badge bg-${colorEstado(sala.estado)}`}
+                      title={nombreEstado(sala.estado)}
+                    >
                       {sala.numero}
                     </span>
                   ))}
