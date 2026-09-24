@@ -27,7 +27,6 @@ function ListaSalas() {
   const [estadoActivo, setEstadoActivo] = useState('todos')
   const [salaSeleccionadaId, setSalaSeleccionadaId] = useState(null)
   const [listaIncidencias, setListaIncidencias] = useState(incidenciasIniciales)
-  const [vistaActiva, setVistaActiva] = useState('salas')
   const [trabajadorSeleccionadoId, setTrabajadorSeleccionadoId] = useState(null)
   const [vistaActiva, setVistaActiva] = useState('inicio')
 
