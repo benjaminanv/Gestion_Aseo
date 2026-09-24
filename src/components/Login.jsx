@@ -9,7 +9,7 @@ function Login({ onIniciarSesion }) {
   function autenticar(usuario, clave) {
     return new Promise((resolve, reject) => {
       setTimeout(() => {
-        if (usuario === 'admin' && clave === 'aseo2026') {
+        if (usuario === 'admin' && clave === 'pepe2026') {
           resolve({ nombre: 'Administrador' })
         } else {
           reject(new Error('Usuario o contraseña incorrectos'))
