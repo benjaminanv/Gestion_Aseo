@@ -20,7 +20,7 @@ function formatearFechaHoraActual() {
   return `${dia}-${mes}-${anio} ${horas}:${minutos}`
 }
 
-function ListaSalas() {
+function ListaSalas({usuarioActual, onCerrarSesion}) {
   const [listaSalas, setListaSalas] = useState([])
   const [cargando, setCargando] = useState(true)
   const [pisoActivo, setPisoActivo] = useState(1)
@@ -104,7 +104,12 @@ function ListaSalas() {
 
     return (
       <div className="app-layout">
-        <Sidebar vistaActiva={vistaActiva} onCambiarVista={setVistaActiva} />
+        <Sidebar 
+          vistaActiva={vistaActiva}
+          onCambiarVista={setVistaActiva}
+          usuarioActual={usuarioActual}
+          onCerrarSesion={onCerrarSesion}
+   />
   
         <main className="app-main container py-4">
           {cargando && (
