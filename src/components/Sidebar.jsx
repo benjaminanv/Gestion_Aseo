@@ -1,9 +1,10 @@
 function Sidebar({ vistaActiva, onCambiarVista }) {
     const opciones = [
-      { id: 'salas', etiqueta: 'Salas' },
-      { id: 'asignar', etiqueta: 'Asignar trabajadores' },
-      { id: 'trabajadores', etiqueta: 'Historial de trabajadores' },
-    ]
+        { id: 'inicio', etiqueta: 'Vista principal' },
+        { id: 'salas', etiqueta: 'Salas' },
+        { id: 'asignar', etiqueta: 'Asignar trabajadores' },
+        { id: 'trabajadores', etiqueta: 'Historial de trabajadores' },
+      ]
   
     return (
       <aside className="app-sidebar">
