@@ -1,6 +1,6 @@
 function Sidebar({ vistaActiva, onCambiarVista, usuarioActual, onCerrarSesion }) {
     const opciones = [
-        { id: 'inicio', etiqueta: 'Vista principal' },
+        { id: 'inicio', etiqueta: 'Menu Principal' },
         { id: 'salas', etiqueta: 'Salas' },
         { id: 'asignar', etiqueta: 'Asignar trabajadores' },
         { id: 'trabajadores', etiqueta: 'Historial de trabajadores' },

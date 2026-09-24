@@ -16,7 +16,7 @@ function VistaPrincipal({ salas }) {
   
     return (
       <div>
-        <h2 className="mb-1">Vista principal</h2>
+        <h2 className="mb-1">Menu Principal</h2>
         <p className="text-muted mb-4">Estado general de limpieza del edificio</p>
   
         <div className="row g-3 mb-4">
