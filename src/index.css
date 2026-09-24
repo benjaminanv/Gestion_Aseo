@@ -138,8 +138,8 @@ code {
   bottom: 130%;
   left: 50%;
   transform: translateX(-50%) translateY(5px);
-  background-color: #212529;
-  color: white;
+  background-color: #3a6ff0;
+  color: #ffffff;
   padding: 8px 12px;
   border-radius: 8px;
   font-size: 0.8rem;
@@ -168,7 +168,8 @@ code {
 }
 
 body {
-  background-color: #f4f6f9;
+  background-color: #0f1729;
+  color: #d7e2f2;
   font-family: 'Segoe UI', system-ui, sans-serif;
 }
 
@@ -179,7 +180,8 @@ body {
 }
 
 .card-sala {
-  border: none;
+  background-color: #16213a;
+  border: 1px solid #31497c;
   border-radius: 14px;
   transition: transform 0.15s ease, box-shadow 0.15s ease;
   cursor: pointer;
@@ -187,12 +189,12 @@ body {
 
 .card-sala:hover {
   transform: translateY(-4px);
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1) !important;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4) !important;
 }
 
 .card-sala .card-title {
   font-weight: 700;
-  color: #2e2e2e;
+  color: #e7edf7;
 }
 
 .badge {
@@ -204,7 +206,7 @@ body {
 .nav-pills .nav-link {
   border-radius: 20px;
   font-weight: 500;
-  color: #495057;
+  color: #a9b8d6;
 }
 
 .nav-pills .nav-link.active {
@@ -213,13 +215,23 @@ body {
 
 .modal-content {
   border-radius: 16px;
-  border: none;
+  border: 1px solid #223357;
+  background-color: #16213a;
+  color: #d7e2f2;
+}
+
+.modal-title {
+  color: #e7edf7;
+}
+
+.btn-close {
+  filter: invert(1) grayscale(100%);
 }
 
 .modal-header {
-  border-bottom: 1px solid #eee;
+  border-bottom: 1px solid #223357;
 }
 
 .modal-footer {
-  border-top: 1px solid #eee;
+  border-top: 1px solid #223357;
 }
