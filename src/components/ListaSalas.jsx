@@ -112,18 +112,20 @@ function ListaSalas() {
 
       {!cargando && (
         <>
-          <ul className="nav nav-pills justify-content-center mb-3">
-            {[1, 2, 3, 4].map((piso) => (
-              <li className="nav-item" key={piso}>
-                <button
-                  className={`nav-link ${pisoActivo === piso ? 'active' : ''}`}
-                  onClick={() => setPisoActivo(piso)}
-                >
-                  Piso {piso}
-                </button>
-              </li>
-            ))}
-          </ul>
+          {vistaActiva === 'salas' && (
+            <ul className="nav nav-pills justify-content-center mb-3">
+              {[1, 2, 3, 4].map((piso) => (
+                <li className="nav-item" key={piso}>
+                  <button
+                    className={`nav-link ${pisoActivo === piso ? 'active' : ''}`}
+                    onClick={() => setPisoActivo(piso)}
+                  >
+                    Piso {piso}
+                  </button>
+                </li>
+              ))}
+            </ul>
+          )}
 
           {vistaActiva === 'salas' && (
             <div className="d-flex justify-content-center gap-2 mb-4">
