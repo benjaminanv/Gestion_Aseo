@@ -235,3 +235,56 @@ body {
 .modal-footer {
   border-top: 1px solid #223357;
 }
+.app-layout {
+  display: flex;
+  min-height: 100vh;
+}
+
+.app-sidebar {
+  width: 220px;
+  flex: none;
+  background-color: #0c1220;
+  border-right: 1px solid #223357;
+  padding: 20px 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.sidebar-brand {
+  color: #6fa8f5;
+  font-weight: 700;
+  font-size: 18px;
+  letter-spacing: 0.3px;
+  margin: 4px 6px 22px;
+}
+
+.sidebar-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.sidebar-link {
+  all: unset;
+  cursor: pointer;
+  padding: 10px 12px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  color: #a9b8d6;
+}
+
+.sidebar-link:hover {
+  background-color: #16213a;
+  color: #e7edf7;
+}
+
+.sidebar-link.active {
+  background-color: #3a6ff0;
+  color: #ffffff;
+}
+
+.app-main {
+  flex: 1;
+}
