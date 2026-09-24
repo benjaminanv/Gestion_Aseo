@@ -8,6 +8,7 @@ import { colorEstado, nombreEstado } from '../utils'
 import { Trabajador } from '../data/trabajador'
 import AsignarTrabajadores from './AsignarTrabajadores'
 import Sidebar from './Sidebar'
+import VistaPrincipal from './VistaPrincipal'
 
 function formatearFechaHoraActual() {
   const ahora = new Date()
@@ -28,7 +29,7 @@ function ListaSalas() {
   const [listaIncidencias, setListaIncidencias] = useState(incidenciasIniciales)
   const [vistaActiva, setVistaActiva] = useState('salas')
   const [trabajadorSeleccionadoId, setTrabajadorSeleccionadoId] = useState(null)
-
+  const [vistaActiva, setVistaActiva] = useState('inicio')
 
   const salaSeleccionada = listaSalas.find((s) => s.idSala === salaSeleccionadaId)
 
@@ -156,7 +157,9 @@ function ListaSalas() {
                   </button>
                 </div>
               )}
-  
+                  {vistaActiva === 'inicio' && (
+                  <VistaPrincipal salas={listaSalas} />
+                )}
               {vistaActiva === 'salas' && (
                 <>
                   <div className="row g-3">
