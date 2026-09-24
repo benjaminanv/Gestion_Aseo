@@ -1,4 +1,4 @@
-function Sidebar({ vistaActiva, onCambiarVista }) {
+function Sidebar({ vistaActiva, onCambiarVista, usuarioActual, onCerrarSesion }) {
     const opciones = [
         { id: 'inicio', etiqueta: 'Vista principal' },
         { id: 'salas', etiqueta: 'Salas' },
@@ -20,6 +20,12 @@ function Sidebar({ vistaActiva, onCambiarVista }) {
             </button>
           ))}
         </nav>
+        <div className="sidebar-footer">
+        <span className="sidebar-user">{usuarioActual?.nombre}</span>
+        <button className="sidebar-logout" onClick={onCerrarSesion}>
+          Cerrar sesión
+        </button>
+      </div>
       </aside>
     )
   }
