@@ -110,22 +110,24 @@ function ListaSalas() {
         <p className="text-center text-muted">Cargando salas...</p>
       )}
 
-      {!cargando && (
-        <>
-          <ul className="nav nav-pills justify-content-center mb-3">
-            {[1, 2, 3, 4].map((piso) => (
-              <li className="nav-item" key={piso}>
-                <button
-                  className={`nav-link ${pisoActivo === piso ? 'active' : ''}`}
-                  onClick={() => setPisoActivo(piso)}
-                >
-                  Piso {piso}
-                </button>
-              </li>
-            ))}
-          </ul>
+{!cargando && (
+  <>
+    {vistaActiva === 'salas' && (
+      <ul className="nav nav-pills justify-content-center mb-3">
+        {[1, 2, 3, 4].map((piso) => (
+          <li className="nav-item" key={piso}>
+            <button
+              className={`nav-link ${pisoActivo === piso ? 'active' : ''}`}
+              onClick={() => setPisoActivo(piso)}
+            >
+              Piso {piso}
+            </button>
+          </li>
+        ))}
+      </ul>
+    )}
 
-          {vistaActiva === 'salas' && (
+    {vistaActiva === 'salas' && (
             <div className="d-flex justify-content-center gap-2 mb-4">
               <button
                 className={`btn btn-sm ${estadoActivo === 'todos' ? 'btn-dark' : 'btn-outline-dark'}`}
@@ -208,7 +210,7 @@ function ListaSalas() {
                 <p className="text-center text-muted mt-4">No hay salas con ese filtro.</p>
               )}
             </>
-          )}
+          )} 
 
           {vistaActiva === 'trabajadores' && (
             <HistorialTrabajadores salas={listaSalas} />
