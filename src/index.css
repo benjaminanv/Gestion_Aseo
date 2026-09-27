@@ -428,3 +428,16 @@ body {
 .sidebar-logout:hover {
   background-color: #2a1520;
 }
+.card {
+  background-color: #16213a;
+  color: #d7e2f2;
+  border: 1px solid #223357;
+}
+
+.card .card-title {
+  color: #e7edf7;
+}
+
+.card .text-muted {
+  color: #8a9bbd !important;
+}
