@@ -18,3 +18,10 @@ Asignar Trabajadores: En esta escena con acceso solamente a administradores o ge
 Historial de Trabajadores: En esta escena podemos encontrar a la totalidad de trabajadores inscritos perimitiendo la visual rapida de sus salas asignadas y el estado de cada una de ellas.
 
 Como agregado para mejorar la experiencia de usuario se agrego el boton de "cerrar sesion" en la parte inferior izquierda.
+
+# Tecnologias Utilizadas
+Para esta version del gestor se han utilizado
+- React 19 + Vite
+- Boostrap 
+- Css personalizado
+- JavaScript 
