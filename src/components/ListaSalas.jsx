@@ -10,6 +10,7 @@ import AsignarTrabajadores from './AsignarTrabajadores'
 import Sidebar from './Sidebar'
 import VistaPrincipal from './VistaPrincipal'
 
+
 function formatearFechaHoraActual() {
   const ahora = new Date()
   const dia = String(ahora.getDate()).padStart(2, '0')
@@ -29,6 +30,7 @@ function ListaSalas({usuarioActual, onCerrarSesion}) {
   const [listaIncidencias, setListaIncidencias] = useState(incidenciasIniciales)
   const [trabajadorSeleccionadoId, setTrabajadorSeleccionadoId] = useState(null)
   const [vistaActiva, setVistaActiva] = useState('inicio')
+  const [menuAbierto, setMenuAbierto] = useState(false)
 
   const salaSeleccionada = listaSalas.find((s) => s.idSala === salaSeleccionadaId)
 
@@ -109,9 +111,22 @@ function ListaSalas({usuarioActual, onCerrarSesion}) {
           onCambiarVista={setVistaActiva}
           usuarioActual={usuarioActual}
           onCerrarSesion={onCerrarSesion}
+          abierto={menuAbierto}
+          onCerrar={() => setMenuAbierto(false)}
    />
-  
+  {menuAbierto && (
+  <div className="sidebar-overlay" onClick={() => setMenuAbierto(false)}></div>
+)}
         <main className="app-main container py-4">
+        <button
+    className="btn-hamburguesa"
+    onClick={() => setMenuAbierto(true)}
+    aria-label="Abrir menú"
+  >
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
           {cargando && (
             <p className="text-center text-muted">Cargando salas...</p>
           )}

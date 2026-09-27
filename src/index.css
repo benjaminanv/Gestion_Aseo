@@ -441,3 +441,52 @@ body {
 .card .text-muted {
   color: #8a9bbd !important;
 }
+.btn-hamburguesa {
+  display: none;
+  flex-direction: column;
+  gap: 4px;
+  background: none;
+  border: none;
+  padding: 8px;
+  margin-bottom: 12px;
+  cursor: pointer;
+}
+
+.btn-hamburguesa span {
+  width: 22px;
+  height: 2px;
+  background-color: #d7e2f2;
+  border-radius: 2px;
+}
+
+.sidebar-overlay {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .app-sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    transform: translateX(-100%);
+    transition: transform 0.25s ease;
+    z-index: 20;
+  }
+
+  .app-sidebar.abierto {
+    transform: translateX(0);
+  }
+
+  .btn-hamburguesa {
+    display: flex;
+  }
+
+  .sidebar-overlay {
+    display: block;
+    position: fixed;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 15;
+  }
+}
