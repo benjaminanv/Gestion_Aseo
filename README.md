@@ -1,5 +1,5 @@
 # Gestion aseo
-Gestion aseo es un proyecto para gestionar tareas de aseo en un entorno preconfigurado, en este caso se representa una simulacion de el edifico L de la Universidad Autonoma de Chile en esepcifico la sede de Temuco.
+Gestion aseo es un proyecto para gestionar tareas de aseo en un entorno preconfigurado, en este caso se representa una simulacion de el edifico L de la Universidad Autonoma de Chile en esepecifico la sede de Temuco.
 
 # Login
 USUARIO: admin
@@ -18,6 +18,10 @@ Asignar Trabajadores: En esta escena con acceso solamente a administradores o ge
 Historial de Trabajadores: En esta escena podemos encontrar a la totalidad de trabajadores inscritos perimitiendo la visual rapida de sus salas asignadas y el estado de cada una de ellas.
 
 Como agregado para mejorar la experiencia de usuario se agrego el boton de "cerrar sesion" en la parte inferior izquierda.
+
+# Version 0.1
+
+Actualmente el proyecto se encuentra en sus incios por lo cual posteriormente puede recibir actualizaciones que afecten o cambien su funcionamiento y/o objetivo 
 
 # Tecnologias Utilizadas
 Para esta version del gestor se han utilizado
