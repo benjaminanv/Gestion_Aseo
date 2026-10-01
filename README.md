@@ -5,7 +5,7 @@ Gestion aseo es un proyecto para gestionar tareas de aseo en un entorno preconfi
 USUARIO: admin
 PASSWORD: UA2026
 
-# Funcionalidades
+# Funcionalidades y Funcionamiento
 El programa cuenta con Vista Principal, Salas, Asignacion Trabajadores y Historial de Trabajadores
 
 Vista Principal: En esta escena se muestra un menu principal con datos rapidos a la vista como son total de salas en gestion y el estado de estas que pueden ser 3 (Limpias, Pendiente y En proceso), ademas de un grafico de torta de sus estados.
@@ -25,3 +25,4 @@ Para esta version del gestor se han utilizado
 - Boostrap 
 - Css personalizado
 - JavaScript 
+
